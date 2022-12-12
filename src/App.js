@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { lazy } from "react";
+import { useDispatch } from "react-redux";
+import { fetchTrending } from "./redux/operations";
 import "./App.css";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 
@@ -9,6 +11,12 @@ const FindSeries = lazy(() => import("./pages/FindSeries"));
 const MyList = lazy(() => import("./pages/MyList"));
 
 function App() {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(fetchTrending());
+	}, [dispatch]);
+
 	return (
 		<>
 			<Routes>
