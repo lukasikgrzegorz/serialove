@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTrending } from "../../redux/operations";
-import { getActualBackground, getTrending } from "../../redux/selectors";
+import { getActualItem, getTrending } from "../../redux/selectors";
 import { getTrendingError } from "../../redux/selectors";
 import { getTrendingIsLoading } from "../../redux/selectors";
 import { setActualItem } from "../../redux/trendingSlice";
@@ -13,7 +13,7 @@ const Home = () => {
 	const isLoading = useSelector(getTrendingIsLoading);
 	const error = useSelector(getTrendingError);
 	const trending = useSelector(getTrending);
-	const actualItem = useSelector(getActualBackground);
+	const actualItem = useSelector(getActualItem);
 
 	useEffect(() => {
 		dispatch(fetchTrending());
@@ -40,7 +40,7 @@ const Home = () => {
 					<img
 						className={css["image"]}
 						loading="lazy"
-						src={`https://image.tmdb.org/t/p/original/${actualBackgroud}`}
+						src={`https://image.tmdb.org/t/p/original/${actualItem.backdrop}`}
 					/>
 				</div>
 			</section>
