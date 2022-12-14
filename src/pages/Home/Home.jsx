@@ -4,7 +4,7 @@ import { fetchTrending } from "../../redux/operations";
 import { getActualBackground, getTrending } from "../../redux/selectors";
 import { getTrendingError } from "../../redux/selectors";
 import { getTrendingIsLoading } from "../../redux/selectors";
-import { setActualBackground } from "../../redux/trendingSlice";
+import { setActualItem } from "../../redux/trendingSlice";
 import Container from "../../components/Container/Container";
 import css from "./Home.module.css";
 
@@ -13,7 +13,7 @@ const Home = () => {
 	const isLoading = useSelector(getTrendingIsLoading);
 	const error = useSelector(getTrendingError);
 	const trending = useSelector(getTrending);
-	const actualBackgroud = useSelector(getActualBackground);
+	const actualItem = useSelector(getActualBackground);
 
 	useEffect(() => {
 		dispatch(fetchTrending());
@@ -21,8 +21,14 @@ const Home = () => {
 
 	const clickHandler = (e) => {
 		const id = e.currentTarget.id;
-		let wantedItem = trending.filter((item) => item.id.toString() === id);
-		dispatch(setActualBackground(wantedItem[0].backdrop_path));
+		const data = trending.filter((item) => item.id.toString() === id);
+		const wantedItem = data.map((item) => ({
+			backdrop: item.backdrop_path,
+			title: item.backdrop_name,
+			rate: item.vote_average,
+			overview: item.overview,
+		}));
+		dispatch(setActualItem(wantedItem[0]));
 		window.scrollTo({ top: 0, behavior: "smooth" });
 	};
 
@@ -44,7 +50,10 @@ const Home = () => {
 						{trending.map((item) => {
 							return (
 								<li key={item.id} id={item.id} onClick={clickHandler} className={css["item"]}>
-									<img src={`https://image.tmdb.org/t/p/w200/${item.poster_path}`} />
+									<img
+										className={css["image-cover"]}
+										src={`https://image.tmdb.org/t/p/w200/${item.poster_path}`}
+									/>
 								</li>
 							);
 						})}

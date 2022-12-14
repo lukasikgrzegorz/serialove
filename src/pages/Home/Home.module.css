@@ -32,13 +32,40 @@
 .list{
   display: flex;
   flex-wrap: wrap;
-  row-gap: 25px;
+  gap: 25px;
 }
 
 .item{
-  flex-basis: 25%;
+  flex-basis: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 480px) {
+  .item {
+    flex-basis: calc((100% - 25px) / 2)
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .item {flex-basis: calc((100% - 50px) / 3)}
+}
+
+@media screen and (min-width: 1200px) {
+  .item {
+    flex-basis: calc((100% - 75px) / 4)
+  }
+}
+
+.item:hover,
+.item:focus{
+  transform: scale(1.1);
+}
+
+.image-cover{
+  border-radius: 15px;
+  overflow: hidden;
 }
 

@@ -4,7 +4,7 @@ import { fetchTrending } from "./operations";
 
 const initialState = {
 	items: [],
-	actualBackgroud: "",
+	actualItem: {},
 	isLoading: false,
 	error: null,
 };
@@ -13,8 +13,8 @@ const trendingSlice = createSlice({
 	name: "trending",
 	initialState,
 	reducers: {
-		setActualBackground(state, action) {
-			state.actualBackgroud = action.payload;
+		setActualItem(state, action) {
+			state.actualItem = action.payload;
 		},
 	},
 	extraReducers: (builder) => {
@@ -26,7 +26,12 @@ const trendingSlice = createSlice({
 				state.isLoading = false;
 				state.error = null;
 				state.items = action.payload;
-				state.actualBackgroud = action.payload[0].backdrop_path;
+				state.actualItem = {
+					backdrop: action.payload[0].backdrop_path,
+					title: action.payload[0].backdrop_name,
+					rate: action.payload[0].vote_average,
+					overview: action.payload[0].overview,
+				};
 			})
 			.addCase(fetchTrending.rejected, (state, action) => {
 				state.isLoading = false;
@@ -36,4 +41,4 @@ const trendingSlice = createSlice({
 });
 
 export const trendingReducer = trendingSlice.reducer;
-export const { setActualBackground } = trendingSlice.actions;
+export const { setActualItem } = trendingSlice.actions;

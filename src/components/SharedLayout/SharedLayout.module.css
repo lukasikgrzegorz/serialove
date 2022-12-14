@@ -1,5 +1,25 @@
 .header{
+  width: 100%;
   position: absolute;
   z-index: 10;
   margin: auto;
+  display: flex;
+  flex-direction: row;
+  padding: 10px 40px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigation{
+  display: flex;
+  gap: 20px;
+}
+
+.logo{
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.logo--accent{
+  color: #FF941C;
 }
