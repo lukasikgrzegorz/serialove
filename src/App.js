@@ -4,8 +4,9 @@ import { lazy } from "react";
 import "./App.css";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 
+
 const Home = lazy(() => import("./pages/Home/Home"));
-const FindSeries = lazy(() => import("./pages/FindSeries"));
+const FindSeries = lazy(() => import("./pages/FindSeries/FindSeries"));
 const MyList = lazy(() => import("./pages/MyList"));
 
 function App() {

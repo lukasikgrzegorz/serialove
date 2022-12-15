@@ -6,6 +6,8 @@ import { getActualItem, getTrending } from "../../redux/selectors";
 import { getTrendingError } from "../../redux/selectors";
 import { getTrendingIsLoading } from "../../redux/selectors";
 import { setActualItem } from "../../redux/trendingSlice";
+import { getActualBackdrop } from "../../redux/selectors";
+import Loader from "../../components/Loader/Loader";
 import Container from "../../components/Container/Container";
 import css from "./Home.module.css";
 
@@ -15,12 +17,14 @@ const Home = () => {
 	const error = useSelector(getTrendingError);
 	const trending = useSelector(getTrending);
 	const actualItem = useSelector(getActualItem);
+	const actualBackdrop = useSelector(getActualBackdrop);
 
 	useEffect(() => {
 		dispatch(fetchTrending());
 	}, [dispatch]);
 
 	const clickHandler = (e) => {
+		dispatch(setActualItem());
 		const id = e.currentTarget.id;
 		const data = trending.filter((item) => item.id.toString() === id);
 		const wantedItem = data.map((item) => ({
@@ -35,6 +39,7 @@ const Home = () => {
 
 	return (
 		<>
+			{isLoading && !error && <Loader />}
 			<section className={css["title-secttion"]}>
 				<div className={css["text-backdrop"]}>
 					<div className={css["text-wrapper"]}>
@@ -57,7 +62,7 @@ const Home = () => {
 					<img
 						className={css["image"]}
 						loading="lazy"
-						src={`https://image.tmdb.org/t/p/original/${actualItem.backdrop}`}
+						src={`https://image.tmdb.org/t/p/original/${actualBackdrop}`}
 					/>
 				</div>
 			</section>
