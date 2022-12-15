@@ -27,6 +27,8 @@
 }
 
 .list {
+  max-width: 1280px;
+  margin: auto;
   width: 100%;
   height: 100%;
   display: flex;
