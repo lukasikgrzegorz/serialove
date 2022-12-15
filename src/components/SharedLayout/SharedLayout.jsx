@@ -7,14 +7,16 @@ const SharedLayout = () => {
 	return (
 		<>
 			<header className={css["header"]}>
-				<nav className={css["navigation"]}>
-					<NavLink to="/">Trending</NavLink>
-					<NavLink to="/findseries">Find Series</NavLink>
-					<NavLink to="/mylist">My list</NavLink>
-				</nav>
-				<a href="#" className={css["logo"]}>
-					Seria<span className={css["logo--accent"]}>Love</span>
-				</a>
+				<div className={css["header-wrapper"]}>
+					<nav className={css["navigation"]}>
+						<NavLink to="/">Trending</NavLink>
+						<NavLink to="/findseries">Find Series</NavLink>
+						<NavLink to="/mylist">My list</NavLink>
+					</nav>
+					<a href="#" className={css["logo"]}>
+						Seria<span className={css["logo--accent"]}>Love</span>
+					</a>
+				</div>
 			</header>
 			<main>
 				<Suspense fallback={<div>Content is Loading...</div>}>

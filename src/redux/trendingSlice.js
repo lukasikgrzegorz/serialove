@@ -28,7 +28,7 @@ const trendingSlice = createSlice({
 				state.items = action.payload;
 				state.actualItem = {
 					backdrop: action.payload[0].backdrop_path,
-					title: action.payload[0].backdrop_name,
+					title: action.payload[0].name,
 					rate: action.payload[0].vote_average,
 					overview: action.payload[0].overview,
 				};

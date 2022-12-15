@@ -5,7 +5,15 @@
   margin: auto;
   display: flex;
   flex-direction: row;
-  padding: 10px 40px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-wrapper{
+  width: 100%;
+  max-width: 1280px;
+  margin: auto;
+  display: flex;
   justify-content: space-between;
   align-items: center;
 }
@@ -13,6 +21,8 @@
 .navigation{
   display: flex;
   gap: 20px;
+  font-size: 18px;
+  padding: 0 25px;
 }
 
 .logo{

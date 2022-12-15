@@ -24,7 +24,7 @@ const Home = () => {
 		const data = trending.filter((item) => item.id.toString() === id);
 		const wantedItem = data.map((item) => ({
 			backdrop: item.backdrop_path,
-			title: item.backdrop_name,
+			title: item.name,
 			rate: item.vote_average,
 			overview: item.overview,
 		}));
@@ -35,7 +35,12 @@ const Home = () => {
 	return (
 		<>
 			<section className={css["title-secttion"]}>
-				<div className={css["text-wrapper"]}></div>
+				<div className={css["text-backdrop"]}>
+					<div className={css["text-wrapper"]}>
+						<h2 className={css["title"]}>{actualItem.title}</h2>
+						<p className={css["overview"]}>{actualItem.overview}</p>
+					</div>
+				</div>
 				<div className={css["image-wrapper"]}>
 					<img
 						className={css["image"]}
