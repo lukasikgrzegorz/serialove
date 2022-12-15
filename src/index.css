@@ -36,3 +36,7 @@ a{
 .active{
   color: #FF941C;
 }
+
+main{
+  min-height: 90vh;
+}

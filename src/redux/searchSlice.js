@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { fetchByQuery } from "./operations";
 
 const initialState = {
 	query: "",
 	hits: [],
+	isLoading: false,
+	error: null,
 };
 
 const searchSlice = createSlice({
@@ -12,8 +15,26 @@ const searchSlice = createSlice({
 		setQuery(state, action) {
 			state.query = action.payload;
 		},
+		clearHits(state) {
+			state.hits = [];
+		},
+	},
+	extraReducers: (builder) => {
+		builder
+			.addCase(fetchByQuery.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(fetchByQuery.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.error = null;
+				state.hits = action.payload;
+			})
+			.addCase(fetchByQuery.rejected, (state, action) => {
+				state.isLoading = false;
+				state.error = action.payload;
+			});
 	},
 });
 
 export const searchReducer = searchSlice.reducer;
-export const { setQuery } = searchSlice.actions;
+export const { setQuery, clearHits } = searchSlice.actions;
