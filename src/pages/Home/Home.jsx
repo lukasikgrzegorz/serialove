@@ -40,7 +40,8 @@ const Home = () => {
 					<div className={css["text-wrapper"]}>
 						<h2 className={css["title"]}>{actualItem.title}</h2>
 						<p className={css["rating"]}>
-							Rating: <span className={css["accent"]}>{actualItem.rate.toFixed(1)}</span>
+							Rating:{" "}
+							<span className={css["accent"]}>{actualItem.rate && actualItem.rate.toFixed(1)}</span>
 						</p>
 						<p className={css["overview"]}>
 							{actualItem.overview}
