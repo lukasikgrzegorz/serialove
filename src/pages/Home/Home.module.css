@@ -1,7 +1,7 @@
 .title-secttion{
   position: relative;
   width: 100%;
-  height: 800px;
+  height: 600px;
 }
 
 .image-wrapper{
@@ -35,7 +35,7 @@
   justify-content: flex-end;
   font-size: 14px;
   font-weight: 300;
-  padding-bottom: 280px;
+  padding-bottom: 130px;
 }
 
 .title{
@@ -43,15 +43,44 @@
   font-weight: 700;
 }
 
+.rating{
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+
+.accent{
+  font-weight: 700;
+  color: #FF941C;;
+}
+
 .overview{
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.button {
+  color: #ffffff;
+  padding: 10px 15px;
+  background-color: #FF941C;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.button:focus,
+.button:hover {
+  transform: scale(1.1);
 }
 
 .trending-section {
   width: 100%;
   max-width: 1280px;
   margin: auto;
-  transform: translateY(-200px);
+  transform: translateY(-50px);
   padding: 25px;
 }
 
@@ -76,12 +105,12 @@
 }
 
 @media screen and (min-width: 768px) {
-  .item {flex-basis: calc((100% - 50px) / 3)}
+  .item {flex-basis: calc((100% - 75px) / 4)}
 }
 
 @media screen and (min-width: 1200px) {
   .item {
-    flex-basis: calc((100% - 75px) / 4)
+    flex-basis: calc((100% - 100px) / 5)
   }
 }
 
@@ -91,6 +120,7 @@
 }
 
 .image-cover{
+  width: 100%;
   border-radius: 15px;
   overflow: hidden;
 }

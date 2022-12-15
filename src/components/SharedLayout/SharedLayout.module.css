@@ -26,10 +26,18 @@
 }
 
 .logo{
+  padding: 0px 25px;
   font-size: 48px;
   font-weight: 700;
 }
 
 .logo--accent{
   color: #FF941C;
+}
+
+.footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
 }

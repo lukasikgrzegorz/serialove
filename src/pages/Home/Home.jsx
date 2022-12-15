@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTrending } from "../../redux/operations";
@@ -38,7 +39,17 @@ const Home = () => {
 				<div className={css["text-backdrop"]}>
 					<div className={css["text-wrapper"]}>
 						<h2 className={css["title"]}>{actualItem.title}</h2>
-						<p className={css["overview"]}>{actualItem.overview}</p>
+						<p className={css["rating"]}>
+							Rating: <span className={css["accent"]}>{actualItem.rate.toFixed(1)}</span>
+						</p>
+						<p className={css["overview"]}>
+							{actualItem.overview}
+							<a href="#">
+								<button type="button" className={css["button"]}>
+									Read more
+								</button>
+							</a>
+						</p>
 					</div>
 				</div>
 				<div className={css["image-wrapper"]}>
@@ -57,7 +68,7 @@ const Home = () => {
 								<li key={item.id} id={item.id} onClick={clickHandler} className={css["item"]}>
 									<img
 										className={css["image-cover"]}
-										src={`https://image.tmdb.org/t/p/w200/${item.poster_path}`}
+										src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
 									/>
 								</li>
 							);
