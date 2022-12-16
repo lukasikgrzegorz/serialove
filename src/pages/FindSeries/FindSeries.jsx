@@ -2,12 +2,13 @@ import Loader from "../../components/Loader/Loader";
 import Container from "../../components/Container/Container";
 import css from "./FindSeries.module.css";
 import Searchbar from "../../components/Searchbar/Searchbar";
+import { Link } from "react-router-dom";
 import { fetchByQuery } from "../../redux/operations";
 import { useDispatch, useSelector } from "react-redux";
-import { getHits, getQuery } from "../../redux/selectors";
+import { getHits } from "../../redux/selectors";
 import { getSerchError } from "../../redux/selectors";
 import { getSerchIsLoading } from "../../redux/selectors";
-import { setQuery, clearHits } from "../../redux/searchSlice";
+import { clearHits } from "../../redux/searchSlice";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
@@ -16,21 +17,22 @@ const FindSeries = () => {
 	const actualHits = useSelector(getHits);
 	const isLoading = useSelector(getSerchIsLoading);
 	const error = useSelector(getSerchError);
-	const query = useSelector(getQuery);
+	const [searchParams, setSearchParams] = useSearchParams();
+	const actualQuery = searchParams.get("query");
 
 	const fetchByActualQuery = async (e) => {
 		const actualQuery = e.target.value;
-		dispatch(setQuery(actualQuery));
+		setSearchParams({ query: actualQuery });
 	};
 
 	useEffect(() => {
-		if (query) {
-			dispatch(fetchByQuery(query));
+		if (actualQuery) {
+			dispatch(fetchByQuery(actualQuery));
 		}
-		if (!query) {
+		if (!actualQuery) {
 			dispatch(clearHits());
 		}
-	}, [query]);
+	}, [actualQuery]);
 
 	return (
 		<>
@@ -47,20 +49,26 @@ const FindSeries = () => {
 					<ul className={css["list"]}>
 						{actualHits.map((hit) => {
 							return (
-								<li key={hit.id} id={hit.id} className={css["item"]}>
-									<img
-										className={css["image-cover"]}
-										src={
-											hit.poster_path
-												? `https://image.tmdb.org/t/p/w200/${hit.poster_path}`
-												: "https://via.placeholder.com/200x300.png?text=SeriaLove"
-										}
-									/>
-									<div className={css["data"]}>
-										<p className={css["rate"]}>{hit.vote_average.toFixed(1)}</p>
-										<p className={css["title"]}>{hit.name}</p>
-									</div>
-								</li>
+								<Link
+									className={css["item"]}
+									to={`${hit.id}`}
+									state={{ from: `/findseries?query=${actualQuery}` }}
+								>
+									<li key={hit.id}>
+										<img
+											className={css["image-cover"]}
+											src={
+												hit.poster_path
+													? `https://image.tmdb.org/t/p/w200/${hit.poster_path}`
+													: "https://via.placeholder.com/200x300.png?text=SeriaLove"
+											}
+										/>
+										<div className={css["data"]}>
+											<p className={css["rate"]}>{hit.vote_average.toFixed(1)}</p>
+											<p className={css["title"]}>{hit.name}</p>
+										</div>
+									</li>
+								</Link>
 							);
 						})}
 					</ul>

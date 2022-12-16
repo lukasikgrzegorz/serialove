@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchByQuery } from "./operations";
 
 const initialState = {
-	query: "",
 	hits: [],
 	isLoading: false,
 	error: null,
