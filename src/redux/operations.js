@@ -28,3 +28,13 @@ export const fetchByQuery = createAsyncThunk("search/fetchByQuery", async (query
 		return thunkAPI.rejectWithValue(error);
 	}
 });
+
+export const fetchByID = createAsyncThunk("details/fetchByID", async (id, thunkAPI) => {
+	try {
+		const response = await client.get(`search/tv/${id}?api_key=${API_KEY}&language=en-US`);
+		console.log(response.data.results);
+		return response.data.results;
+	} catch (error) {
+		return thunkAPI.rejectWithValue(error);
+	}
+});

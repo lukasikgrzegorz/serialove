@@ -8,3 +8,5 @@ export const getHits = (state) => state.search.hits;
 export const getQuery = (state) => state.search.query;
 export const getSerchIsLoading = (state) => state.search.isLoading;
 export const getSerchError = (state) => state.search.error;
+
+export const getDetails = (state) => state.details.data;
