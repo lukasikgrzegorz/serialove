@@ -9,6 +9,7 @@ import { getSerchError } from "../../redux/selectors";
 import { getSerchIsLoading } from "../../redux/selectors";
 import { setQuery, clearHits } from "../../redux/searchSlice";
 import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const FindSeries = () => {
 	const dispatch = useDispatch();

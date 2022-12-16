@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchTrending } from "../../redux/operations";
 import { getActualItem, getTrending } from "../../redux/selectors";
 import { getTrendingError } from "../../redux/selectors";
@@ -28,6 +29,7 @@ const Home = () => {
 		const id = e.currentTarget.id;
 		const data = trending.filter((item) => item.id.toString() === id);
 		const wantedItem = data.map((item) => ({
+			id: item.id,
 			backdrop: item.backdrop_path,
 			title: item.name,
 			rate: item.vote_average,
@@ -50,11 +52,11 @@ const Home = () => {
 						</p>
 						<p className={css["overview"]}>
 							{actualItem.overview}
-							<a href="#">
+							<Link to={`findseries/${actualItem.id}`} state={{ from: "/" }}>
 								<button type="button" className={css["button"]}>
 									Read more
 								</button>
-							</a>
+							</Link>
 						</p>
 					</div>
 				</div>
