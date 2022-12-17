@@ -63,7 +63,6 @@ const Home = () => {
 				<div className={css["image-wrapper"]}>
 					<img
 						className={css["image"]}
-						loading="lazy"
 						src={`https://image.tmdb.org/t/p/original/${actualBackdrop}`}
 					/>
 				</div>

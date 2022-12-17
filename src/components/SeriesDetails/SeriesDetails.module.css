@@ -1,0 +1,87 @@
+.title-secttion {
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+
+.image-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text-backdrop {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.736) 0%, black 90%, black 100%);
+
+}
+
+.top-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 800px;
+  gap: 25px;
+  margin: auto;
+  margin-top: 80px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.image-cover{
+  border-radius: 15px;
+  width: 250px;
+}
+
+.title{
+  font-size: 26px;
+  font-weight: 700px;
+}
+
+.accent {
+  font-weight: 700;
+  color: #FF941C;
+}
+
+
+.overview{
+  margin-top: 15px;
+}
+
+.season-section{
+  max-width: 800px;
+  margin: auto;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.season-title{
+  font-size: 24px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.image-season{
+  width: 150px;
+  border-radius: 15px;
+}
+
+.list-season{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.item-season{
+  display: flex;
+  align-items: center;
+  gap:15px
+}

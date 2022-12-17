@@ -31,9 +31,9 @@ export const fetchByQuery = createAsyncThunk("search/fetchByQuery", async (query
 
 export const fetchByID = createAsyncThunk("details/fetchByID", async (id, thunkAPI) => {
 	try {
-		const response = await client.get(`search/tv/${id}?api_key=${API_KEY}&language=en-US`);
-		console.log(response.data.results);
-		return response.data.results;
+		const response = await client.get(`tv/${id}?api_key=${API_KEY}&language=en-US`);
+		console.log(response.data);
+		return response.data;
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
 	}
