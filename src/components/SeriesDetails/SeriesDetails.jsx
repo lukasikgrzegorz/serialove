@@ -6,6 +6,7 @@ import { getDetails, getDetailsIsLoading, getDetailsError } from "../../redux/se
 import Loader from "../Loader/Loader";
 import Container from "../Container/Container";
 import css from "./SeriesDetails.module.css";
+import ScrollContainer from "react-indiana-drag-scroll";
 
 const SeriesDetails = () => {
 	const { seriesID } = useParams();
@@ -32,7 +33,8 @@ const SeriesDetails = () => {
 							<div>
 								<div>
 									<h2 className={css["title"]}>{details.name}</h2>
-									<ul className={css["list"]}>
+
+									<ul c>
 										<li>{details.genres && details.genres.map((item) => item.name).join(", ")}</li>
 										<li>
 											Rating:{" "}
@@ -47,6 +49,7 @@ const SeriesDetails = () => {
 											Pupularity: <span className={css["accent"]}>{details.popularity}</span>
 										</li>
 									</ul>
+
 									<div className={css["overview"]}>
 										<h3>Overview:</h3>
 										<p>{details.overview}</p>
@@ -66,12 +69,16 @@ const SeriesDetails = () => {
 				</div>
 			</div>
 			<div className={css["season-section"]}>
-				<h3 className={css["season-title"]}>Seasons</h3>
-				<ul className={css["list-season"]}>
+				<ul>
+					<li className={css["season-title"]}>Seasons</li>
+					<li className={css["season-title"]}>Cast</li>
+					<li className={css["season-title"]}>Comments</li>
+				</ul>
+				<ScrollContainer className={css["list-season"]}>
 					{details.seasons &&
 						details.seasons.map((item) => {
 							return (
-								<li key={item.id} className={css["item-season"]}>
+								<div key={item.id} className={css["item-season"]}>
 									<img
 										className={css["image-season"]}
 										src={
@@ -87,10 +94,10 @@ const SeriesDetails = () => {
 											<li>Episodes: {item.episode_count}</li>
 										</ul>
 									</div>
-								</li>
+								</div>
 							);
 						})}
-				</ul>
+				</ScrollContainer>
 			</div>
 		</>
 	);
