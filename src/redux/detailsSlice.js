@@ -3,6 +3,7 @@ import { fetchByID } from "./operations";
 
 const initialState = {
 	data: {},
+	cast: [],
 	isLoading: false,
 	error: null,
 };
@@ -16,7 +17,8 @@ const detailsSlice = createSlice({
 				state.isLoading = true;
 			})
 			.addCase(fetchByID.fulfilled, (state, action) => {
-				state.data = action.payload;
+				state.data = action.payload.data;
+				state.cast = action.payload.cast;
 				state.isLoading = false;
 				state.error = null;
 			})

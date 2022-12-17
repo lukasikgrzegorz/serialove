@@ -2,16 +2,23 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchByID } from "../../redux/operations";
-import { getDetails, getDetailsIsLoading, getDetailsError } from "../../redux/selectors";
+import {
+	getDetails,
+	getDetailsCast,
+	getDetailsIsLoading,
+	getDetailsError,
+} from "../../redux/selectors";
 import Loader from "../Loader/Loader";
 import Container from "../Container/Container";
 import Seasons from "./Seasons/Seasons";
+import Cast from "./Cast/Cast";
 import css from "./SeriesDetails.module.css";
 
 const SeriesDetails = () => {
 	const { seriesID } = useParams();
 	const dispatch = useDispatch();
 	const details = useSelector(getDetails);
+	const cast = useSelector(getDetailsCast);
 	const isLoading = useSelector(getDetailsIsLoading);
 	const error = useSelector(getDetailsError);
 
@@ -72,6 +79,7 @@ const SeriesDetails = () => {
 				<h2 className={css["season-title"]}>Seasons</h2>
 				{details.seasons && <Seasons data={details.seasons}></Seasons>}
 				<h2 className={css["season-title"]}>Cast</h2>
+				{cast && <Cast data={cast}></Cast>}
 			</Container>
 		</>
 	);
