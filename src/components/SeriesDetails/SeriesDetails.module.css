@@ -53,3 +53,13 @@
 .overview{
   margin-top: 15px;
 }
+
+
+.season-title{
+  font-size: 24px;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0px 10px;
+}
+
+

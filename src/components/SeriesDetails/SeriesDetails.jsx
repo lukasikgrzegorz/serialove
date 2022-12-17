@@ -3,10 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchByID } from "../../redux/operations";
 import {
+	addToQueque,
+	addToWatched,
+	removeFromQueque,
+	removeFromWatched,
+} from "../../redux/myListSlice";
+import {
 	getDetails,
 	getDetailsCast,
 	getDetailsIsLoading,
 	getDetailsError,
+	getQueque,
+	getWatched,
 } from "../../redux/selectors";
 import Loader from "../Loader/Loader";
 import Container from "../Container/Container";
@@ -21,10 +29,33 @@ const SeriesDetails = () => {
 	const cast = useSelector(getDetailsCast);
 	const isLoading = useSelector(getDetailsIsLoading);
 	const error = useSelector(getDetailsError);
+	const watched = useSelector(getWatched);
+	const queque = useSelector(getQueque);
+	const isWatched = watched.some((index) => index.id === seriesID);
+	const isQueque = queque.some((index) => index.id === seriesID);
 
 	useEffect(() => {
 		dispatch(fetchByID(seriesID));
 	}, []);
+
+	const addSeriestoWatched = (e) => {
+		if (isQueque) {
+			dispatch(removeFromQueque(seriesID));
+		}
+		if (!isWatched) {
+			dispatch(addToWatched({ id: seriesID, name: details.name, cover: details.poster_path }));
+		} else {
+			dispatch(removeFromWatched(seriesID));
+		}
+	};
+
+	const addSeriestoQueque = (e) => {
+		if (!isQueque) {
+			dispatch(addToQueque({ id: seriesID, name: details.name, cover: details.poster_path }));
+		} else {
+			dispatch(removeFromQueque(seriesID));
+		}
+	};
 
 	return (
 		<>
@@ -61,6 +92,15 @@ const SeriesDetails = () => {
 										<h3>Overview:</h3>
 										<p>{details.overview}</p>
 									</div>
+
+									<div>
+										<button onClick={addSeriestoWatched} disabled={isWatched}>
+											WATCHED
+										</button>
+										<button onClick={addSeriestoQueque} disabled={isQueque || isWatched}>
+											QUEQUE
+										</button>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -76,10 +116,10 @@ const SeriesDetails = () => {
 				</div>
 			</div>
 			<Container>
-				<h2 className={css["season-title"]}>Seasons</h2>
-				{details.seasons && <Seasons data={details.seasons}></Seasons>}
 				<h2 className={css["season-title"]}>Cast</h2>
 				{cast && <Cast data={cast}></Cast>}
+				<h2 className={css["season-title"]}>Seasons</h2>
+				{details.seasons && <Seasons data={details.seasons}></Seasons>}
 			</Container>
 		</>
 	);

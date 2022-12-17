@@ -12,3 +12,6 @@ export const getDetails = (state) => state.details.data;
 export const getDetailsCast = (state) => state.details.cast;
 export const getDetailsIsLoading = (state) => state.details.isLoading;
 export const getDetailsError = (state) => state.details.error;
+
+export const getWatched = (state) => state.myList.watched;
+export const getQueque = (state) => state.myList.queque;
