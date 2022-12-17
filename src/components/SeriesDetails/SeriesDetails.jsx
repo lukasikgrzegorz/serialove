@@ -5,8 +5,8 @@ import { fetchByID } from "../../redux/operations";
 import { getDetails, getDetailsIsLoading, getDetailsError } from "../../redux/selectors";
 import Loader from "../Loader/Loader";
 import Container from "../Container/Container";
+import Seasons from "./Seasons/Seasons";
 import css from "./SeriesDetails.module.css";
-import ScrollContainer from "react-indiana-drag-scroll";
 
 const SeriesDetails = () => {
 	const { seriesID } = useParams();
@@ -34,7 +34,7 @@ const SeriesDetails = () => {
 								<div>
 									<h2 className={css["title"]}>{details.name}</h2>
 
-									<ul c>
+									<ul>
 										<li>{details.genres && details.genres.map((item) => item.name).join(", ")}</li>
 										<li>
 											Rating:{" "}
@@ -68,37 +68,11 @@ const SeriesDetails = () => {
 					)}
 				</div>
 			</div>
-			<div className={css["season-section"]}>
-				<ul>
-					<li className={css["season-title"]}>Seasons</li>
-					<li className={css["season-title"]}>Cast</li>
-					<li className={css["season-title"]}>Comments</li>
-				</ul>
-				<ScrollContainer className={css["list-season"]}>
-					{details.seasons &&
-						details.seasons.map((item) => {
-							return (
-								<div key={item.id} className={css["item-season"]}>
-									<img
-										className={css["image-season"]}
-										src={
-											item.poster_path
-												? `https://image.tmdb.org/t/p/w200/${item.poster_path}`
-												: "https://via.placeholder.com/200x300.png?text=SeriaLove"
-										}
-									/>
-									<div>
-										<ul>
-											<li>{item.name}</li>
-											<li>Air date: {item.air_date}</li>
-											<li>Episodes: {item.episode_count}</li>
-										</ul>
-									</div>
-								</div>
-							);
-						})}
-				</ScrollContainer>
-			</div>
+			<Container>
+				<h2 className={css["season-title"]}>Seasons</h2>
+				{details.seasons && <Seasons data={details.seasons}></Seasons>}
+				<h2 className={css["season-title"]}>Cast</h2>
+			</Container>
 		</>
 	);
 };

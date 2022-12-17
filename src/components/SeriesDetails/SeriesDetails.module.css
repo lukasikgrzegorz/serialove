@@ -53,37 +53,3 @@
 .overview{
   margin-top: 15px;
 }
-
-.season-section{
-  max-width: 1280px;
-  padding: 0px 25px;
-  margin: auto;
-  font-size: 14px;
-  font-weight: 300;
-}
-
-.season-title{
-  font-size: 24px;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.image-season{
-  width: 150px;
-  border-radius: 15px;
-}
-
-.list-season{
-  display: flex;
-  gap: 15px;
-  max-width: 1280px;
-  overflow-x: auto;
-}
-
-.item-season{
-  flex-basis: calc((100% - 45px) / 4);
-  display: flex;
-  align-items: center;
-  gap:15px
-}
