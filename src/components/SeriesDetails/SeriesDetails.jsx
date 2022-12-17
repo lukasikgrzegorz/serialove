@@ -85,7 +85,6 @@ const SeriesDetails = () => {
 											<li>{item.name}</li>
 											<li>Air date: {item.air_date}</li>
 											<li>Episodes: {item.episode_count}</li>
-											<li>{item.overview}</li>
 										</ul>
 									</div>
 								</li>
