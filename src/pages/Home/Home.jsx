@@ -45,7 +45,7 @@ const Home = () => {
 		<>
 			{isLoading && !error && <Loader />}
 			<DecorativeContainer image={actualBackdrop}>
-				<div className={css["text-wrapper"]}>
+				<div className={css["wrapper"]}>
 					<h2 className={css["title"]}>{actualItem.title}</h2>
 					<p className={css["rating"]}>
 						Rating:{" "}

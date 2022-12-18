@@ -1,5 +1,5 @@
 import { Suspense, useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import css from "./SharedLayout.module.css";
 
@@ -41,9 +41,9 @@ const SharedLayout = () => {
 							My List
 						</NavLink>
 					</nav>
-					<a href="#" className={css["logo"]}>
+					<Link to="/" className={css["logo"]}>
 						Seria<span className={css["logo--accent"]}>Love</span>
-					</a>
+					</Link>
 				</div>
 			</header>
 			<main>

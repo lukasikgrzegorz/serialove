@@ -7,12 +7,13 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
+
 }
 
 .header-wrapper{
   width: 100%;
   max-width: 1280px;
+  padding: 25px;
   margin: auto;
   display: flex;
   flex-direction: row-reverse;
@@ -30,7 +31,7 @@
   display: none;
   gap: 20px;
   font-size: 18px;
-  padding: 0 25px;
+  
 }
 
 @media screen and (min-width: 768px) {
@@ -63,7 +64,6 @@
   background-size: 100%;
   border-color: transparent;
   border-radius: 5px;
-  margin: 0 25px;
   display: flex;
   cursor: pointer;
 }
@@ -100,7 +100,6 @@
 }
 
 .logo{
-  padding: 0px 25px;
   font-size: 32px;
   font-weight: 700;
 }
