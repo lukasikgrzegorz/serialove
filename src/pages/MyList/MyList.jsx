@@ -7,6 +7,7 @@ import {
 	switchToggle,
 } from "../../redux/myListSlice";
 import DefaultButton from "../../components/DefaultButton/DefaultButton";
+import ExtraButton from "../../components/ExtraButton/ExtraButton";
 import { getWatched, getQueque, getToggle } from "../../redux/selectors";
 import css from "./MyList.module.css";
 
@@ -43,8 +44,8 @@ const MyList = () => {
 		<>
 			<section className={css["mylist-section"]}>
 				<div>
-					<DefaultButton value="Watched" onClickHandler={onClickHanlder} />
-					<DefaultButton value="Queque" onClickHandler={onClickHanlder} />
+					<DefaultButton value="Watched" unselect={isSwitched} onClickHandler={onClickHanlder} />
+					<DefaultButton value="Queque" unselect={!isSwitched} onClickHandler={onClickHanlder} />
 				</div>
 				<ul>
 					{(!isSwitched ? watched : queque).map((item) => {
@@ -52,9 +53,11 @@ const MyList = () => {
 							<li key={item.id}>
 								<img src={`https://image.tmdb.org/t/p/w200/${item.cover}`}></img>
 								{item.name}
-								<button id={item.id} onClick={actionHandler}>
-									{!isSwitched ? "Remove" : "Add to watched"}
-								</button>
+								<ExtraButton
+									value={!isSwitched ? "Remove" : "Add to watched"}
+									id={item.id}
+									onClickHandler={actionHandler}
+								/>
 							</li>
 						);
 					})}
