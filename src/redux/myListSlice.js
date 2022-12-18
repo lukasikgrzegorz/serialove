@@ -1,9 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+const savedWatched = JSON.parse(localStorage.getItem("watched"));
+const savedQueque = JSON.parse(localStorage.getItem("queque"));
+
+let initialState = {
 	watched: [],
 	queque: [],
 };
+
+if (savedWatched) {
+	initialState.watched = [...savedWatched];
+}
+
+if (savedQueque) {
+	initialState.queque = [...savedQueque];
+}
 
 const myListSlice = createSlice({
 	name: "myList",
@@ -11,6 +22,7 @@ const myListSlice = createSlice({
 	reducers: {
 		addToWatched: (state, action) => {
 			state.watched.push(action.payload);
+			console.log(state.watched);
 		},
 		addToQueque: (state, action) => {
 			state.queque.push(action.payload);

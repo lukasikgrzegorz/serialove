@@ -38,6 +38,14 @@ const SeriesDetails = () => {
 		dispatch(fetchByID(seriesID));
 	}, []);
 
+	useEffect(() => {
+		localStorage.setItem("watched", JSON.stringify(watched));
+	}, [watched]);
+
+	useEffect(() => {
+		localStorage.setItem("queque", JSON.stringify(queque));
+	}, [queque]);
+
 	const addSeriestoWatched = (e) => {
 		if (isQueque) {
 			dispatch(removeFromQueque(seriesID));
