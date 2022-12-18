@@ -7,7 +7,7 @@ import SharedLayout from "./components/SharedLayout/SharedLayout";
 const Home = lazy(() => import("./pages/Home/Home"));
 const FindSeries = lazy(() => import("./pages/FindSeries/FindSeries"));
 const SeriesDetail = lazy(() => import("./components/SeriesDetails/SeriesDetails"));
-const MyList = lazy(() => import("./pages/MyList"));
+const MyList = lazy(() => import("./pages/MyList/MyList"));
 
 function App() {
 	return (

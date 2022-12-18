@@ -6,6 +6,7 @@ const savedQueque = JSON.parse(localStorage.getItem("queque"));
 let initialState = {
 	watched: [],
 	queque: [],
+	toggle: false,
 };
 
 if (savedWatched) {
@@ -22,7 +23,6 @@ const myListSlice = createSlice({
 	reducers: {
 		addToWatched: (state, action) => {
 			state.watched.push(action.payload);
-			console.log(state.watched);
 		},
 		addToQueque: (state, action) => {
 			state.queque.push(action.payload);
@@ -35,9 +35,12 @@ const myListSlice = createSlice({
 			const index = state.queque.findIndex((item) => item.id === action.payload);
 			state.queque.splice(index, 1);
 		},
+		switchToggle: (state) => {
+			state.toggle = !state.toggle;
+		},
 	},
 });
 
 export const myListReducer = myListSlice.reducer;
-export const { addToWatched, addToQueque, removeFromWatched, removeFromQueque } =
+export const { addToWatched, addToQueque, removeFromWatched, removeFromQueque, switchToggle } =
 	myListSlice.actions;

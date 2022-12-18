@@ -15,3 +15,4 @@ export const getDetailsError = (state) => state.details.error;
 
 export const getWatched = (state) => state.myList.watched;
 export const getQueque = (state) => state.myList.queque;
+export const getToggle = (state) => state.myList.toggle;
