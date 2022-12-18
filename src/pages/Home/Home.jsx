@@ -9,6 +9,7 @@ import { getTrendingIsLoading } from "../../redux/selectors";
 import { setActualItem } from "../../redux/trendingSlice";
 import { getActualBackdrop } from "../../redux/selectors";
 import Loader from "../../components/Loader/Loader";
+import DecorativeContainer from "../../components/DecorativeContainer/DecorativeContainer";
 import Container from "../../components/Container/Container";
 import DefaultButton from "../../components/DefaultButton/DefaultButton";
 import css from "./Home.module.css";
@@ -43,29 +44,21 @@ const Home = () => {
 	return (
 		<>
 			{isLoading && !error && <Loader />}
-			<section className={css["title-secttion"]}>
-				<div className={css["text-backdrop"]}>
-					<div className={css["text-wrapper"]}>
-						<h2 className={css["title"]}>{actualItem.title}</h2>
-						<p className={css["rating"]}>
-							Rating:{" "}
-							<span className={css["accent"]}>{actualItem.rate && actualItem.rate.toFixed(1)}</span>
-						</p>
-						<p className={css["overview"]}>
-							{actualItem.overview}
-							<Link to={`findseries/${actualItem.id}`} state={{ from: "/" }}>
-								<DefaultButton value={"Read more"}></DefaultButton>
-							</Link>
-						</p>
-					</div>
+			<DecorativeContainer image={actualBackdrop}>
+				<div className={css["text-wrapper"]}>
+					<h2 className={css["title"]}>{actualItem.title}</h2>
+					<p className={css["rating"]}>
+						Rating:{" "}
+						<span className={css["accent"]}>{actualItem.rate && actualItem.rate.toFixed(1)}</span>
+					</p>
+					<p className={css["overview"]}>
+						{actualItem.overview}
+						<Link to={`findseries/${actualItem.id}`} state={{ from: "/" }}>
+							<DefaultButton value={"Read more"}></DefaultButton>
+						</Link>
+					</p>
 				</div>
-				<div className={css["image-wrapper"]}>
-					<img
-						className={css["image"]}
-						src={`https://image.tmdb.org/t/p/original/${actualBackdrop}`}
-					/>
-				</div>
-			</section>
+			</DecorativeContainer>
 			<section className={css["trending-section"]}>
 				<Container>
 					<ul className={css["list"]}>
