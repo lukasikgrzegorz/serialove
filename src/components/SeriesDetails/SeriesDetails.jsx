@@ -20,6 +20,7 @@ import Loader from "../Loader/Loader";
 import Container from "../Container/Container";
 import Seasons from "./Seasons/Seasons";
 import Cast from "./Cast/Cast";
+import DefaultButton from "../DefaultButton/DefaultButton";
 import css from "./SeriesDetails.module.css";
 
 const SeriesDetails = () => {
@@ -58,6 +59,9 @@ const SeriesDetails = () => {
 	};
 
 	const addSeriestoQueque = (e) => {
+		if (isWatched) {
+			dispatch(removeFromWatched(seriesID));
+		}
 		if (!isQueque) {
 			dispatch(addToQueque({ id: seriesID, name: details.name, cover: details.poster_path }));
 		} else {
@@ -102,12 +106,16 @@ const SeriesDetails = () => {
 									</div>
 
 									<div>
-										<button onClick={addSeriestoWatched} disabled={isWatched}>
-											WATCHED
-										</button>
-										<button onClick={addSeriestoQueque} disabled={isQueque || isWatched}>
-											QUEQUE
-										</button>
+										<DefaultButton
+											value="Watched"
+											onClickHandler={addSeriestoWatched}
+											unselect={!isWatched}
+										/>
+										<DefaultButton
+											value="Queque"
+											onClickHandler={addSeriestoQueque}
+											unselect={!isQueque}
+										/>
 									</div>
 								</div>
 							</div>

@@ -10,6 +10,7 @@ import { setActualItem } from "../../redux/trendingSlice";
 import { getActualBackdrop } from "../../redux/selectors";
 import Loader from "../../components/Loader/Loader";
 import Container from "../../components/Container/Container";
+import DefaultButton from "../../components/DefaultButton/DefaultButton";
 import css from "./Home.module.css";
 
 const Home = () => {
@@ -53,9 +54,7 @@ const Home = () => {
 						<p className={css["overview"]}>
 							{actualItem.overview}
 							<Link to={`findseries/${actualItem.id}`} state={{ from: "/" }}>
-								<button type="button" className={css["button"]}>
-									Read more
-								</button>
+								<DefaultButton value={"Read more"}></DefaultButton>
 							</Link>
 						</p>
 					</div>

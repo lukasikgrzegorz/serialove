@@ -6,6 +6,7 @@ import {
 	removeFromWatched,
 	switchToggle,
 } from "../../redux/myListSlice";
+import DefaultButton from "../../components/DefaultButton/DefaultButton";
 import { getWatched, getQueque, getToggle } from "../../redux/selectors";
 import css from "./MyList.module.css";
 
@@ -42,12 +43,8 @@ const MyList = () => {
 		<>
 			<section className={css["mylist-section"]}>
 				<div>
-					<button disabled={!isSwitched} onClick={onClickHanlder}>
-						watched
-					</button>
-					<button disabled={isSwitched} onClick={onClickHanlder}>
-						queque
-					</button>
+					<DefaultButton value="Watched" onClickHandler={onClickHanlder} />
+					<DefaultButton value="Queque" onClickHandler={onClickHanlder} />
 				</div>
 				<ul>
 					{(!isSwitched ? watched : queque).map((item) => {

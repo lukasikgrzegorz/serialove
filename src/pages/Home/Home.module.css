@@ -61,21 +61,6 @@
   justify-content: flex-end;
 }
 
-.button {
-  color: #ffffff;
-  padding: 10px 15px;
-  background-color: #FF941C;
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 5px;
-  border-color: transparent;
-}
-
-.button:focus,
-.button:hover {
-  transform: scale(1.1);
-}
-
 .trending-section {
   width: 100%;
   max-width: 1280px;
