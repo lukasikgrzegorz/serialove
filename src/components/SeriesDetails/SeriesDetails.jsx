@@ -74,54 +74,66 @@ const SeriesDetails = () => {
 		<>
 			{isLoading && !error && <Loader />}
 			<DecorativeContainer image={details.backdrop_path} isSmall={true}>
-				<div className={css["top-wrapper"]}>
+				<div className={css["wrapper"]}>
 					<img
-						className={css["image-cover"]}
-						src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`}
+						className={css["image"]}
+						src={
+							details.poster_path
+								? `https://image.tmdb.org/t/p/w500/${details.poster_path}`
+								: "https://via.placeholder.com/500x750.png?text=SeriaLove"
+						}
 					/>
-					<div>
+					<div className={css["info"]}>
+						<h2 className={css["title"]}>{details.name}</h2>
+						<ul>
+							<li>{details.genres && details.genres.map((item) => item.name).join(", ")}</li>
+							<li>
+								Rating:{" "}
+								<span className={css["accent"]}>
+									{details.vote_average && details.vote_average.toFixed(1)}
+								</span>
+							</li>
+							<li>
+								Votes: <span className={css["accent"]}>{details.vote_count}</span>
+							</li>
+							<li>
+								Pupularity: <span className={css["accent"]}>{details.popularity}</span>
+							</li>
+						</ul>
 						<div>
-							<h2 className={css["title"]}>{details.name}</h2>
-							<ul>
-								<li>{details.genres && details.genres.map((item) => item.name).join(", ")}</li>
-								<li>
-									Rating:{" "}
-									<span className={css["accent"]}>
-										{details.vote_average && details.vote_average.toFixed(1)}
-									</span>
-								</li>
-								<li>
-									Votes: <span className={css["accent"]}>{details.vote_count}</span>
-								</li>
-								<li>
-									Pupularity: <span className={css["accent"]}>{details.popularity}</span>
-								</li>
-							</ul>
-							<div className={css["overview"]}>
-								<h3>Overview:</h3>
-								<p>{details.overview}</p>
-							</div>
-							<div>
-								<DefaultButton
-									value="Watched"
-									onClickHandler={addSeriestoWatched}
-									unselect={!isWatched}
-								/>
-								<DefaultButton
-									value="Queque"
-									onClickHandler={addSeriestoQueque}
-									unselect={!isQueque}
-								/>
-							</div>
+							<DefaultButton
+								value="Watched"
+								onClickHandler={addSeriestoWatched}
+								unselect={!isWatched}
+							/>
+							<DefaultButton
+								value="Queque"
+								onClickHandler={addSeriestoQueque}
+								unselect={!isQueque}
+							/>
 						</div>
 					</div>
 				</div>
 			</DecorativeContainer>
 			<Container>
-				<h2 className={css["season-title"]}>Cast</h2>
-				{cast && <Cast data={cast}></Cast>}
-				<h2 className={css["season-title"]}>Seasons</h2>
-				{details.seasons && <Seasons data={details.seasons}></Seasons>}
+				{details.overview && (
+					<>
+						<h2 className={css["season-title"]}>Overview</h2>
+						<p>{details.overview}</p>
+					</>
+				)}
+				{cast && cast.length > 0 && (
+					<>
+						<h2 className={css["season-title"]}>Cast</h2>
+						<Cast data={cast}></Cast>
+					</>
+				)}
+				{details.seasons && details.seasons.length > 0 && (
+					<>
+						<h2 className={css["season-title"]}>Seasons</h2>
+						<Seasons data={details.seasons}></Seasons>
+					</>
+				)}
 			</Container>
 		</>
 	);

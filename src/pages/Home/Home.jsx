@@ -59,7 +59,7 @@ const Home = () => {
 					</p>
 				</div>
 			</DecorativeContainer>
-			<section className={css["trending-section"]}>
+			<div className={css["trending-section"]}>
 				<Container>
 					<ul className={css["list"]}>
 						{trending.map((item) => {
@@ -74,7 +74,7 @@ const Home = () => {
 						})}
 					</ul>
 				</Container>
-			</section>
+			</div>
 		</>
 	);
 };

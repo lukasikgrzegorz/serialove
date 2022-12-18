@@ -6,7 +6,13 @@
 
 .container-small{
   composes: container;
-  height: 500px;
+  height: 650px;
+}
+
+@media screen and (min-width: 768px) {
+  .container-small{
+    height: 520px;
+  }
 }
 
 .image-wrapper {
@@ -23,6 +29,7 @@
 .text-backdrop {
   width: 100%;
   height: 100%;
+  
   position: absolute;
   background-image: linear-gradient(rgba(0, 0, 0, 0.425) 0%, black 90%, black 100%);
 }

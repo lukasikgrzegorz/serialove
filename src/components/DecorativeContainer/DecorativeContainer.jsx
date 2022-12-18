@@ -6,7 +6,9 @@ const DecorativeContainer = ({ children, image, isSmall }) => {
 		<div className={isSmall ? css["container-small"] : css["container"]}>
 			<div className={css["text-backdrop"]}>{children}</div>
 			<div className={css["image-wrapper"]}>
-				<img className={css["image"]} src={`https://image.tmdb.org/t/p/original/${image}`} />
+				{image && (
+					<img className={css["image"]} src={`https://image.tmdb.org/t/p/original/${image}`} />
+				)}
 			</div>
 		</div>
 	);

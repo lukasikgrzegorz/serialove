@@ -4,12 +4,12 @@ import ScrollContainer from "react-indiana-drag-scroll";
 
 const Seasons = ({ data }) => {
 	return (
-		<ScrollContainer className={css["list-season"]}>
+		<ScrollContainer className={css["list"]}>
 			{data.map((item) => {
 				return (
-					<div key={item.id} className={css["item-season"]}>
+					<div key={item.id} className={css["item"]}>
 						<img
-							className={css["image-season"]}
+							className={css["image"]}
 							src={
 								item.poster_path
 									? `https://image.tmdb.org/t/p/w200/${item.poster_path}`
@@ -18,7 +18,7 @@ const Seasons = ({ data }) => {
 						/>
 						<div>
 							<ul>
-								<li>{item.name}</li>
+								<li className={css["title"]}>{item.name}</li>
 								<li>Air date: {item.air_date}</li>
 								<li>Episodes: {item.episode_count}</li>
 							</ul>

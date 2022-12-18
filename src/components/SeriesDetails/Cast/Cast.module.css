@@ -1,25 +1,25 @@
-.season-title {
-  font-size: 24px;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.image-season {
+.image {
   width: 150px;
   border-radius: 15px;
 }
 
-.list-season {
+.list {
   display: flex;
-  gap: 15px;
+  gap: 30px;
   max-width: 1280px;
   cursor: grab;
 }
 
-.item-season {
-  min-width: 300px;
+.item {
+  min-width: 150px;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   gap: 15px
+}
+
+.title {
+  font-weight: 400;
 }

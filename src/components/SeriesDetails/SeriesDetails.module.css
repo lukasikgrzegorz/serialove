@@ -1,42 +1,47 @@
-.title-secttion {
-  position: relative;
-  width: 100%;
-  height: 500px;
-}
-
-.image-wrapper {
-  width: 100%;
-  height: 100%;
-}
-
-.image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.text-backdrop {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.736) 0%, black 90%, black 100%);
-}
-
-.top-wrapper{
+.wrapper{
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 800px;
   gap: 25px;
   margin: auto;
-  margin-top: 80px;
+  padding: 0px 25px;
+  margin-top: 120px;
   font-size: 14px;
   font-weight: 300;
 }
 
-.image-cover{
+@media screen and (min-width: 768px) {
+  .wrapper{
+    flex-direction: row;
+    max-width: 800px;
+  }
+}
+
+.image{
   border-radius: 15px;
-  width: 250px;
+  width: 180px;
+}
+
+@media screen and (min-width: 768px) {
+  .image{
+      width: 250px;
+  }
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: center;
+  height:100%;
+  gap: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .info {
+      align-items: flex-start;
+    }
 }
 
 .title{
@@ -48,12 +53,6 @@
   font-weight: 700;
   color: #FF941C;
 }
-
-
-.overview{
-  margin-top: 15px;
-}
-
 
 .season-title{
   font-size: 24px;
