@@ -15,25 +15,21 @@ const SharedLayout = () => {
 		<>
 			{mobileMenu && (
 				<div className={css["mobile-navigation"]}>
-					<NavLink to="/" onClick={toogleMenu}>
+					<NavLink to="/" onClick={toogleMenu} className={css["link"]}>
 						Trending
 					</NavLink>
-					<NavLink to="/findseries" onClick={toogleMenu}>
+					<NavLink to="/findseries" onClick={toogleMenu} className={css["link"]}>
 						Find Series
 					</NavLink>
-					<NavLink to="/mylist" onClick={toogleMenu}>
+					<NavLink to="/mylist" onClick={toogleMenu} className={css["link"]}>
 						My List
 					</NavLink>
-					<button className={css["menu-btn"]} onClick={toogleMenu}>
-						x
-					</button>
+					<button className={css["close-btn"]} onClick={toogleMenu} />
 				</div>
 			)}
 			<header className={css["header"]}>
 				<div className={css["header-wrapper"]}>
-					<button className={css["menu-btn"]} onClick={toogleMenu}>
-						MENU
-					</button>
+					<button className={css["menu-btn"]} onClick={toogleMenu} />
 					<nav className={css["navigation"]}>
 						<NavLink className={css["link"]} to="/">
 							Trending

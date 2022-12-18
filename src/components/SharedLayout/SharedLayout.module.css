@@ -15,8 +15,15 @@
   max-width: 1280px;
   margin: auto;
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .header-wrapper{
+    flex-direction: row;
+  }
 }
 
 .navigation {
@@ -35,10 +42,11 @@
 .mobile-navigation {
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   z-index: 999;
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   gap: 25px;
   width: 300px;
   height: 100vh;
@@ -48,16 +56,42 @@
 }
 
 .menu-btn{
-  background-color: #FF941C;
-  width: 40px;
-  height: 40px;
+  background-color: transparent;
+  min-width: 32px;
+  min-height: 32px;
+  background-image: url(./../../images/menu.svg);
+  background-size: 100%;
+  border-color: transparent;
   border-radius: 5px;
+  margin: 0 25px;
   display: flex;
+  cursor: pointer;
+}
+
+.menu-btn:hover{
+  transform: scale(1.1);
 }
 
 @media screen and (min-width: 768px) {
   .menu-btn {
     display: none;
+  }
+}
+
+.close-btn{
+  composes: menu-btn;
+  background-image: url(./../../images/clear.svg);
+  min-width: 32px;
+  min-height: 32px;
+  margin: auto;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+}
+
+@media screen and (min-width: 768px) {
+  .close-btn {
+    display: block;
   }
 }
 
@@ -67,8 +101,14 @@
 
 .logo{
   padding: 0px 25px;
-  font-size: 48px;
+  font-size: 32px;
   font-weight: 700;
+}
+
+@media screen and (min-width: 480px) {
+  .logo{
+      font-size: 48px;
+    }
 }
 
 .logo:hover {
