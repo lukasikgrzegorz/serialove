@@ -42,17 +42,28 @@ const MyList = () => {
 
 	return (
 		<>
-			<section className={css["mylist-section"]}>
-				<div>
+			<section className={css["wrapper"]}>
+				<div className={css["button-holder"]}>
 					<DefaultButton value="Watched" unselect={isSwitched} onClickHandler={onClickHanlder} />
 					<DefaultButton value="Queque" unselect={!isSwitched} onClickHandler={onClickHanlder} />
 				</div>
-				<ul>
+				<ul className={css["list"]}>
 					{(!isSwitched ? watched : queque).map((item) => {
 						return (
-							<li key={item.id}>
-								<img src={`https://image.tmdb.org/t/p/w200/${item.cover}`}></img>
-								{item.name}
+							<li key={item.id} className={css["item"]}>
+								<div className={css["image-holder"]}>
+									<img
+										className={css["image"]}
+										src={
+											item.cover
+												? `https://image.tmdb.org/t/p/w200/${item.cover}`
+												: "https://via.placeholder.com/200x300.png?text=SeriaLove"
+										}
+									></img>
+									<div className={css["data"]}>
+										<p className={css["title"]}>{item.name}</p>
+									</div>
+								</div>
 								<ExtraButton
 									value={!isSwitched ? "Remove" : "Add to watched"}
 									id={item.id}
