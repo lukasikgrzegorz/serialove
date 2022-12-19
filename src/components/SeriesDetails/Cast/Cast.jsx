@@ -7,7 +7,7 @@ const Cast = ({ data }) => {
 		<ScrollContainer className={css["list"]}>
 			{data.map((item) => {
 				return (
-					<div className={css["item"]}>
+					<div key={item.id} className={css["item"]}>
 						<img
 							className={css["image"]}
 							src={
@@ -17,10 +17,10 @@ const Cast = ({ data }) => {
 							}
 							alt={item.name}
 						/>
-						<ul>
-							<li className={css["title"]}>{item.name}</li>
-							<li>{item.character}</li>
-						</ul>
+						<div>
+							<p className={css["title"]}>{item.name}</p>
+							<p>{item.character}</p>
+						</div>
 					</div>
 				);
 			})}

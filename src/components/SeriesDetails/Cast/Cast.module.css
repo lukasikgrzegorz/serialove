@@ -6,6 +6,8 @@
 .list {
   display: flex;
   gap: 30px;
+
+  align-items: flex-start;
   max-width: 1280px;
   cursor: grab;
 }

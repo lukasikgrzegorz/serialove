@@ -47,11 +47,12 @@ const FindSeries = () => {
 						{actualHits.map((hit) => {
 							return (
 								<Link
+									key={hit.id}
 									className={css["item"]}
 									to={`${hit.id}`}
 									state={{ from: `/findseries?query=${actualQuery}` }}
 								>
-									<li key={hit.id} className={css["image-holder"]}>
+									<li className={css["image-holder"]}>
 										<img
 											className={css["image"]}
 											src={
