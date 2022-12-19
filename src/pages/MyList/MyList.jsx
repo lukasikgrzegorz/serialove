@@ -1,11 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import {
-	addToWatched,
-	removeFromQueque,
-	removeFromWatched,
-	switchToggle,
-} from "../../redux/myListSlice";
+import { useEffect, useState } from "react";
+import { addToWatched, removeFromQueque, removeFromWatched } from "../../redux/myListSlice";
 import DefaultButton from "../../components/DefaultButton/DefaultButton";
 import ExtraButton from "../../components/ExtraButton/ExtraButton";
 import { getWatched, getQueque, getToggle } from "../../redux/selectors";
@@ -16,6 +11,7 @@ const MyList = () => {
 	const queque = useSelector(getQueque);
 	const isSwitched = useSelector(getToggle);
 	const dispatch = useDispatch();
+	const [toggle, setToggle] = useState(false);
 
 	useEffect(() => {
 		localStorage.setItem("watched", JSON.stringify(watched));
@@ -26,12 +22,13 @@ const MyList = () => {
 	}, [queque]);
 
 	const onClickHanlder = () => {
-		dispatch(switchToggle());
+		const actualToggle = toggle;
+		setToggle(!actualToggle);
 	};
 
 	const actionHandler = (e) => {
 		const id = e.target.id;
-		if (!isSwitched) {
+		if (!toggle) {
 			dispatch(removeFromWatched(id));
 		} else {
 			const wantedItem = queque.filter((item) => item.id === id)[0];
@@ -44,11 +41,11 @@ const MyList = () => {
 		<>
 			<section className={css["wrapper"]}>
 				<div className={css["button-holder"]}>
-					<DefaultButton value="Watched" unselect={isSwitched} onClickHandler={onClickHanlder} />
-					<DefaultButton value="Queque" unselect={!isSwitched} onClickHandler={onClickHanlder} />
+					<DefaultButton value="Watched" unselect={toggle} onClickHandler={onClickHanlder} />
+					<DefaultButton value="Queque" unselect={!toggle} onClickHandler={onClickHanlder} />
 				</div>
 				<ul className={css["list"]}>
-					{(!isSwitched ? watched : queque).map((item) => {
+					{(!toggle ? watched : queque).map((item) => {
 						return (
 							<li key={item.id} className={css["item"]}>
 								<div className={css["image-holder"]}>
@@ -65,7 +62,7 @@ const MyList = () => {
 									</div>
 								</div>
 								<ExtraButton
-									value={!isSwitched ? "Remove" : "Add to watched"}
+									value={!toggle ? "Remove" : "Add to watched"}
 									id={item.id}
 									onClickHandler={actionHandler}
 								/>
