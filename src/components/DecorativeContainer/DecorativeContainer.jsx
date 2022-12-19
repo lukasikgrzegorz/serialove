@@ -16,9 +16,9 @@ const DecorativeContainer = ({ children, image, isSmall }) => {
 
 	return (
 		<>
-			{!isLoaded && <Loader />}
+			{!isLoaded && image && <Loader />}
 			<div className={isSmall ? css["container-small"] : css["container"]}>
-				<div className={css["text-backdrop"]}>{isLoaded && children}</div>
+				<div className={css["text-backdrop"]}>{children}</div>
 				<div className={css["image-wrapper"]}>
 					{image && (
 						<img
@@ -27,7 +27,6 @@ const DecorativeContainer = ({ children, image, isSmall }) => {
 							src={`https://image.tmdb.org/t/p/original/${image}`}
 						/>
 					)}
-					
 				</div>
 			</div>
 		</>
