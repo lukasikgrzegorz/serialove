@@ -37,15 +37,11 @@ const FindSeries = () => {
 	return (
 		<>
 			{isLoading && !error && <Loader />}
-			<section className={css["search-section"]}>
-				<div className={css["input"]}>
-					<Container>
-						<div className={css["input-wrapper"]}>
-							<Searchbar onChangeHandler={fetchByActualQuery} />
-						</div>
-					</Container>
+			<div className={css["wrapper"]}>
+				<div className={css["input-holder"]}>
+					<Searchbar onChangeHandler={fetchByActualQuery} />
 				</div>
-				<div className={css["hits"]}>
+				<div className={css["hits-holder"]}>
 					<ul className={css["list"]}>
 						{actualHits.map((hit) => {
 							return (
@@ -54,9 +50,9 @@ const FindSeries = () => {
 									to={`${hit.id}`}
 									state={{ from: `/findseries?query=${actualQuery}` }}
 								>
-									<li key={hit.id}>
+									<li key={hit.id} className={css["image-holder"]}>
 										<img
-											className={css["image-cover"]}
+											className={css["image"]}
 											src={
 												hit.poster_path
 													? `https://image.tmdb.org/t/p/w200/${hit.poster_path}`
@@ -73,7 +69,7 @@ const FindSeries = () => {
 						})}
 					</ul>
 				</div>
-			</section>
+			</div>
 		</>
 	);
 };
