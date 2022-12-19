@@ -55,6 +55,12 @@
   font-weight: 400;
   padding: 25px;
   background-color: #000000d0;
+  animation: fadeIn 500ms linear;
+}
+
+@keyframes fadeIn {
+  0% {transform: translateX(100%);}
+  100% {transform: translateX(0);}
 }
 
 .menu-btn{
@@ -68,6 +74,8 @@
   display: flex;
   cursor: pointer;
 }
+
+
 
 .menu-btn:hover{
   transform: scale(1.1);
