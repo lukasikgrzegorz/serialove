@@ -9,7 +9,6 @@ import css from "./MyList.module.css";
 const MyList = () => {
 	const watched = useSelector(getWatched);
 	const queque = useSelector(getQueque);
-	const isSwitched = useSelector(getToggle);
 	const dispatch = useDispatch();
 	const [toggle, setToggle] = useState(false);
 

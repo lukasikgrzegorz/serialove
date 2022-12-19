@@ -2,6 +2,7 @@ import Loader from "../../components/Loader/Loader";
 import Container from "../../components/Container/Container";
 import css from "./FindSeries.module.css";
 import Searchbar from "../../components/Searchbar/Searchbar";
+import { debounce } from "throttle-debounce";
 import { Link } from "react-router-dom";
 import { fetchByQuery } from "../../redux/operations";
 import { useDispatch, useSelector } from "react-redux";
@@ -39,7 +40,7 @@ const FindSeries = () => {
 			{isLoading && !error && <Loader />}
 			<div className={css["wrapper"]}>
 				<div className={css["input-holder"]}>
-					<Searchbar onChangeHandler={fetchByActualQuery} />
+					<Searchbar onChangeHandler={debounce(500, fetchByActualQuery)} />
 				</div>
 				<div className={css["hits-holder"]}>
 					<ul className={css["list"]}>
