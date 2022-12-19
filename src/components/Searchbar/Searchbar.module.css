@@ -2,16 +2,25 @@
   color: #fbfbfb;
   width: 100%;
   max-width: 550px;
-  padding: 15px;
+  padding: 15px 15px 15px 40px;
   border-radius: 5px;
   border: 2px solid #B8B8B8;
   background-color: #484848;
   font-size: 16px;
   margin:auto;
+  background-image: url("./../../images/search.svg");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: 12px center;
+}
+
+.serachbar__input::placeholder{
+  color: #5e5e5e;
 }
 
 .serachbar__input:hover,
 .serachbar__input:focus{
   outline: none;
   border-color: #EC7B7B;
+  
 }
