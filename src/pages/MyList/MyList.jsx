@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { addToWatched, removeFromQueque, removeFromWatched } from "../../redux/myListSlice";
 import DefaultButton from "../../components/DefaultButton/DefaultButton";
 import ExtraButton from "../../components/ExtraButton/ExtraButton";
+import EmptyInfo from "./EmptyInfo/EmptyInfo";
 import { getWatched, getQueque, getToggle } from "../../redux/selectors";
 import css from "./MyList.module.css";
 
@@ -43,6 +44,8 @@ const MyList = () => {
 					<DefaultButton value="Watched" unselect={toggle} onClickHandler={onClickHanlder} />
 					<DefaultButton value="Queque" unselect={!toggle} onClickHandler={onClickHanlder} />
 				</div>
+				{!toggle && watched && watched.length < 1 && <EmptyInfo />}
+				{toggle && queque && queque.length < 1 && <EmptyInfo />}
 				<ul className={css["list"]}>
 					{(!toggle ? watched : queque).map((item) => {
 						return (
