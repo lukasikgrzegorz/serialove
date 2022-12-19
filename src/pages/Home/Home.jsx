@@ -7,7 +7,6 @@ import { getActualItem, getTrending } from "../../redux/selectors";
 import { getTrendingError } from "../../redux/selectors";
 import { getTrendingIsLoading } from "../../redux/selectors";
 import { setActualItem } from "../../redux/trendingSlice";
-import { getActualBackdrop } from "../../redux/selectors";
 import Loader from "../../components/Loader/Loader";
 import DecorativeContainer from "../../components/DecorativeContainer/DecorativeContainer";
 import Container from "../../components/Container/Container";
@@ -20,7 +19,6 @@ const Home = () => {
 	const error = useSelector(getTrendingError);
 	const trending = useSelector(getTrending);
 	const actualItem = useSelector(getActualItem);
-	const actualBackdrop = useSelector(getActualBackdrop);
 
 	useEffect(() => {
 		dispatch(fetchTrending());
@@ -44,7 +42,7 @@ const Home = () => {
 	return (
 		<>
 			{isLoading && !error && <Loader />}
-			<DecorativeContainer image={actualBackdrop}>
+			<DecorativeContainer image={actualItem.backdrop}>
 				<div className={css["wrapper"]}>
 					<h2 className={css["title"]}>{actualItem.title}</h2>
 					<p className={css["rating"]}>
