@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -48,6 +47,7 @@ const Home = () => {
 	return (
 		<>
 			{isLoading && !error && <Loader />}
+
 			<DecorativeContainer image={actualItem.backdrop}>
 				<div className={css["wrapper"]}>
 					<h2 className={css["title"]}>{actualItem.title}</h2>

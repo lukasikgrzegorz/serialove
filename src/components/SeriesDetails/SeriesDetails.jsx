@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { fetchByID } from "../../redux/operations";
+import { Link } from "react-router-dom";
 import {
 	addToQueque,
 	addToWatched,
@@ -35,6 +36,8 @@ const SeriesDetails = () => {
 	const queque = useSelector(getQueque);
 	const isWatched = watched.some((index) => index.id === seriesID);
 	const isQueque = queque.some((index) => index.id === seriesID);
+	const location = useLocation();
+	const backLink = location.state?.from ?? "/";
 
 	useEffect(() => {
 		dispatch(fetchByID(seriesID));
@@ -73,8 +76,14 @@ const SeriesDetails = () => {
 	return (
 		<>
 			{isLoading && !error && <Loader />}
+
 			<DecorativeContainer image={details.backdrop_path} isSmall={true}>
 				<div className={css["wrapper"]}>
+					<Link to={backLink}>
+						<button className={css["back-btn"]} type="button">
+							Go back
+						</button>
+					</Link>
 					<img
 						className={css["image"]}
 						src={
