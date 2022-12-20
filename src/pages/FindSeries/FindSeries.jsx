@@ -1,5 +1,4 @@
 import Loader from "../../components/Loader/Loader";
-import Container from "../../components/Container/Container";
 import css from "./FindSeries.module.css";
 import Searchbar from "../../components/Searchbar/Searchbar";
 import { debounce } from "throttle-debounce";
@@ -21,9 +20,8 @@ const FindSeries = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const actualQuery = searchParams.get("query");
 
-	const fetchByActualQuery = async (e) => {
-		const actualQuery = e.target.value;
-		setSearchParams({ query: actualQuery });
+	const setActualQuery = (e) => {
+		setSearchParams({ query: e });
 	};
 
 	useEffect(() => {
@@ -40,7 +38,7 @@ const FindSeries = () => {
 			{isLoading && !error && <Loader />}
 			<div className={css["wrapper"]}>
 				<div className={css["input-holder"]}>
-					<Searchbar onChangeHandler={debounce(500, fetchByActualQuery)} />
+					<Searchbar startValue={actualQuery} onChange={debounce(500, setActualQuery)} />
 				</div>
 				<div className={css["hits-holder"]}>
 					<ul className={css["list"]}>
