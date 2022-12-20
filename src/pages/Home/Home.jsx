@@ -19,6 +19,7 @@ const Home = () => {
 	const error = useSelector(getTrendingError);
 	const trending = useSelector(getTrending);
 	const actualItem = useSelector(getActualItem);
+	let shortOverview = "";
 
 	useEffect(() => {
 		dispatch(fetchTrending());
@@ -39,6 +40,11 @@ const Home = () => {
 		window.scrollTo({ top: 0, behavior: "smooth" });
 	};
 
+	if (actualItem.overview && actualItem.overview.length > 300) {
+		const slicedOverview = actualItem.overview.slice(0, 300);
+		shortOverview = slicedOverview.slice(0, slicedOverview.lastIndexOf(" ")) + "...";
+	} else shortOverview = actualItem.overview;
+
 	return (
 		<>
 			{isLoading && !error && <Loader />}
@@ -50,7 +56,7 @@ const Home = () => {
 						<span className={css["accent"]}>{actualItem.rate && actualItem.rate.toFixed(1)}</span>
 					</p>
 					<p className={css["overview"]}>
-						{actualItem.overview}
+						{shortOverview}
 						<Link to={`findseries/${actualItem.id}`} state={{ from: "/" }}>
 							<DefaultButton value={"Read more"}></DefaultButton>
 						</Link>
