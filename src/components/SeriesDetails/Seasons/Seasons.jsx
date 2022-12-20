@@ -1,6 +1,7 @@
 import React from "react";
 import css from "./Seasons.module.css";
 import ScrollContainer from "react-indiana-drag-scroll";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Seasons = ({ data }) => {
 	return (
@@ -8,7 +9,7 @@ const Seasons = ({ data }) => {
 			{data.map((item) => {
 				return (
 					<div key={item.id} className={css["item"]}>
-						<img
+						<LazyLoadImage
 							className={css["image"]}
 							src={
 								item.poster_path

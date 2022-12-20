@@ -24,6 +24,7 @@ import Seasons from "./Seasons/Seasons";
 import Cast from "./Cast/Cast";
 import DefaultButton from "../DefaultButton/DefaultButton";
 import css from "./SeriesDetails.module.css";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const SeriesDetails = () => {
 	const { seriesID } = useParams();
@@ -85,7 +86,7 @@ const SeriesDetails = () => {
 							Go back
 						</button>
 					</Link>
-					<img
+					<LazyLoadImage
 						className={css["image"]}
 						src={
 							details.poster_path
