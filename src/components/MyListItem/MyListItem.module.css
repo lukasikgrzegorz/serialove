@@ -1,0 +1,34 @@
+.image-holder {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  position: absolute;
+  background-color: #212020cd;
+  width: 100%;
+  bottom: 0;
+  padding: 10px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  justify-content: center;
+}
+
+.title {
+  font-size: 12px;
+  font-weight: 400;
+  text-align: center;
+}

@@ -2,10 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { addToWatched, removeFromQueque, removeFromWatched } from "../../redux/myListSlice";
 import DefaultButton from "../../components/DefaultButton/DefaultButton";
-import ExtraButton from "../../components/ExtraButton/ExtraButton";
-import EmptyInfo from "./EmptyInfo/EmptyInfo";
-import { getWatched, getQueque, getToggle } from "../../redux/selectors";
+import EmptyInfo from "../../components/EmptyInfo/EmptyInfo";
+import { getWatched, getQueque } from "../../redux/selectors";
 import css from "./MyList.module.css";
+import MyListItem from "../../components/MyListItem/MyListItem";
 
 const MyList = () => {
 	const watched = useSelector(getWatched);
@@ -50,23 +50,12 @@ const MyList = () => {
 					{(!toggle ? watched : queque).map((item) => {
 						return (
 							<li key={item.id} className={css["item"]}>
-								<div className={css["image-holder"]}>
-									<img
-										className={css["image"]}
-										src={
-											item.cover
-												? `https://image.tmdb.org/t/p/w200/${item.cover}`
-												: "https://via.placeholder.com/200x300.png?text=SeriaLove"
-										}
-									></img>
-									<div className={css["data"]}>
-										<p className={css["title"]}>{item.name}</p>
-									</div>
-								</div>
-								<ExtraButton
-									value={!toggle ? "Remove" : "Add to watched"}
+								<MyListItem
+									image={item.cover}
 									id={item.id}
+									name={item.name}
 									onClickHandler={actionHandler}
+									toggle={toggle}
 								/>
 							</li>
 						);
