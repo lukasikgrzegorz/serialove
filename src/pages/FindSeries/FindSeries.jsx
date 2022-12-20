@@ -2,7 +2,6 @@ import Loader from "../../components/Loader/Loader";
 import css from "./FindSeries.module.css";
 import Searchbar from "../../components/Searchbar/Searchbar";
 import { debounce } from "throttle-debounce";
-import { Link } from "react-router-dom";
 import { fetchByQuery } from "../../redux/operations";
 import { useDispatch, useSelector } from "react-redux";
 import { getHits } from "../../redux/selectors";
@@ -11,6 +10,8 @@ import { getSerchIsLoading } from "../../redux/selectors";
 import { clearHits } from "../../redux/searchSlice";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import FindSeriesItem from "../../components/FindSeriesItem/FindSeriesItem";
 
 const FindSeries = () => {
 	const dispatch = useDispatch();
@@ -50,20 +51,11 @@ const FindSeries = () => {
 									to={`${hit.id}`}
 									state={{ from: `/findseries?query=${actualQuery}` }}
 								>
-									<li className={css["image-holder"]}>
-										<img
-											className={css["image"]}
-											src={
-												hit.poster_path
-													? `https://image.tmdb.org/t/p/w200/${hit.poster_path}`
-													: "https://via.placeholder.com/200x300.png?text=SeriaLove"
-											}
-										/>
-										<div className={css["data"]}>
-											<p className={css["rate"]}>{hit.vote_average.toFixed(1)}</p>
-											<p className={css["title"]}>{hit.name}</p>
-										</div>
-									</li>
+									<FindSeriesItem
+										name={hit.name}
+										image={hit.poster_path}
+										votes={hit.vote_average}
+									/>
 								</Link>
 							);
 						})}

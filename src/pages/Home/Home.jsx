@@ -10,6 +10,7 @@ import Loader from "../../components/Loader/Loader";
 import DecorativeContainer from "../../components/DecorativeContainer/DecorativeContainer";
 import Container from "../../components/Container/Container";
 import DefaultButton from "../../components/DefaultButton/DefaultButton";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import css from "./Home.module.css";
 
 const Home = () => {
@@ -48,7 +49,7 @@ const Home = () => {
 		<>
 			{isLoading && !error && <Loader />}
 
-			<DecorativeContainer image={actualItem.backdrop}>
+			<DecorativeContainer image={actualItem.backdrop} alt={actualItem.item}>
 				<div className={css["wrapper"]}>
 					<h2 className={css["title"]}>{actualItem.title}</h2>
 					<p className={css["rating"]}>
@@ -69,9 +70,11 @@ const Home = () => {
 						{trending.map((item) => {
 							return (
 								<li key={item.id} id={item.id} onClick={clickHandler} className={css["item"]}>
-									<img
+									<LazyLoadImage
 										className={css["image-cover"]}
-										src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
+										src={`https://image.tmdb.org/t/p/w342/${item.poster_path}`}
+										alt={item.name}
+										effect="blur"
 									/>
 								</li>
 							);

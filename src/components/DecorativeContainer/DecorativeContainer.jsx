@@ -3,7 +3,7 @@ import css from "./DecorativeContainer.module.css";
 import Loader from "../Loader/Loader";
 import { useEffect, useState } from "react";
 
-const DecorativeContainer = ({ children, image, isSmall }) => {
+const DecorativeContainer = ({ children, image, isSmall, alt }) => {
 	const [isLoaded, setIsLoaded] = useState(false);
 
 	useEffect(() => {
@@ -24,7 +24,9 @@ const DecorativeContainer = ({ children, image, isSmall }) => {
 						<img
 							onLoad={onLoadHandler}
 							className={css["image"]}
-							src={`https://image.tmdb.org/t/p/original/${image}`}
+							src={`https://image.tmdb.org/t/p/w1280/${image}`}
+							loading="lazy"
+							alt={alt}
 						/>
 					)}
 				</div>

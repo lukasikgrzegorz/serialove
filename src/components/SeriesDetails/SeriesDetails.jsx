@@ -41,6 +41,7 @@ const SeriesDetails = () => {
 
 	useEffect(() => {
 		dispatch(fetchByID(seriesID));
+		window.scrollTo({ top: 0, behavior: "smooth" });
 	}, []);
 
 	useEffect(() => {
@@ -77,7 +78,7 @@ const SeriesDetails = () => {
 		<>
 			{isLoading && !error && <Loader />}
 
-			<DecorativeContainer image={details.backdrop_path} isSmall={true}>
+			<DecorativeContainer image={details.backdrop_path} alt={details.name} isSmall={true}>
 				<div className={css["wrapper"]}>
 					<Link to={backLink}>
 						<button className={css["back-btn"]} type="button">
