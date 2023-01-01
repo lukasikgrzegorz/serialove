@@ -10,7 +10,7 @@ https://lukasikgrzegorz.github.io/serialove
 Clone the project
 
 ```bash
-  git clone https://github.com/lukasikgrzegorz/prosiapp
+  git clone https://github.com/lukasikgrzegorz/serialove
 ```
 
 Install dependencies
