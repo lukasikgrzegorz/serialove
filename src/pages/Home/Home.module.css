@@ -81,6 +81,8 @@
 .item:hover,
 .item:focus{
   transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  
 }
 
 .image-cover{
