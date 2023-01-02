@@ -1,34 +1,34 @@
 {
   "files": {
     "main.css": "/serialove/static/css/main.fd9daa75.css",
-    "main.js": "/serialove/static/js/main.f354aa38.js",
-    "static/css/936.c205f5e8.chunk.css": "/serialove/static/css/936.c205f5e8.chunk.css",
-    "static/js/936.fff39b39.chunk.js": "/serialove/static/js/936.fff39b39.chunk.js",
+    "main.js": "/serialove/static/js/main.b5282c08.js",
+    "static/css/936.063a035e.chunk.css": "/serialove/static/css/936.063a035e.chunk.css",
+    "static/js/936.03538c9d.chunk.js": "/serialove/static/js/936.03538c9d.chunk.js",
     "static/css/500.9022e437.chunk.css": "/serialove/static/css/500.9022e437.chunk.css",
     "static/js/500.26b3e11f.chunk.js": "/serialove/static/js/500.26b3e11f.chunk.js",
     "static/css/212.8370462c.chunk.css": "/serialove/static/css/212.8370462c.chunk.css",
-    "static/js/212.ff43205b.chunk.js": "/serialove/static/js/212.ff43205b.chunk.js",
+    "static/js/212.cbf372d4.chunk.js": "/serialove/static/js/212.cbf372d4.chunk.js",
     "static/css/742.017bbe59.chunk.css": "/serialove/static/css/742.017bbe59.chunk.css",
-    "static/js/742.fa784827.chunk.js": "/serialove/static/js/742.fa784827.chunk.js",
+    "static/js/742.3d2fad28.chunk.js": "/serialove/static/js/742.3d2fad28.chunk.js",
     "static/js/87.ec10f0f2.chunk.js": "/serialove/static/js/87.ec10f0f2.chunk.js",
     "index.html": "/serialove/index.html",
     "static/media/search.svg": "/serialove/static/media/search.c60d3f8e47e57db4dbc5.svg",
     "static/media/menu.svg": "/serialove/static/media/menu.d1b1b8b761992896dc58.svg",
     "static/media/clear.svg": "/serialove/static/media/clear.fea2a20eeafa797ccd87.svg",
     "main.fd9daa75.css.map": "/serialove/static/css/main.fd9daa75.css.map",
-    "main.f354aa38.js.map": "/serialove/static/js/main.f354aa38.js.map",
-    "936.c205f5e8.chunk.css.map": "/serialove/static/css/936.c205f5e8.chunk.css.map",
-    "936.fff39b39.chunk.js.map": "/serialove/static/js/936.fff39b39.chunk.js.map",
+    "main.b5282c08.js.map": "/serialove/static/js/main.b5282c08.js.map",
+    "936.063a035e.chunk.css.map": "/serialove/static/css/936.063a035e.chunk.css.map",
+    "936.03538c9d.chunk.js.map": "/serialove/static/js/936.03538c9d.chunk.js.map",
     "500.9022e437.chunk.css.map": "/serialove/static/css/500.9022e437.chunk.css.map",
     "500.26b3e11f.chunk.js.map": "/serialove/static/js/500.26b3e11f.chunk.js.map",
     "212.8370462c.chunk.css.map": "/serialove/static/css/212.8370462c.chunk.css.map",
-    "212.ff43205b.chunk.js.map": "/serialove/static/js/212.ff43205b.chunk.js.map",
+    "212.cbf372d4.chunk.js.map": "/serialove/static/js/212.cbf372d4.chunk.js.map",
     "742.017bbe59.chunk.css.map": "/serialove/static/css/742.017bbe59.chunk.css.map",
-    "742.fa784827.chunk.js.map": "/serialove/static/js/742.fa784827.chunk.js.map",
+    "742.3d2fad28.chunk.js.map": "/serialove/static/js/742.3d2fad28.chunk.js.map",
     "87.ec10f0f2.chunk.js.map": "/serialove/static/js/87.ec10f0f2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fd9daa75.css",
-    "static/js/main.f354aa38.js"
+    "static/js/main.b5282c08.js"
   ]
 }
