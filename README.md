@@ -26,6 +26,11 @@ Start the server
   npm start
 ```
 
+Test
+
+```bash
+  npm run test
+```
 
 ## 📝 Tech Stack
 
